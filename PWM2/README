@@ -1,0 +1,10 @@
+Данная прошивка позволяет вам управлять частотой одного из ШИМ контроллеров с мертвым временем, 
+а также скважностью еще одного ШИМ контроллера.
+
+Остальная информация в комментариях в коде
+
+
+This firmware allows you to control the frequency of one of the PWM controllers with dead time,
+as well as the duty cycle of another PWM controller.
+
+The rest of the information in the comments in the code
