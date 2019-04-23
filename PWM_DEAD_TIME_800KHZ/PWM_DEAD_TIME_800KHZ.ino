@@ -2,7 +2,7 @@
 
 
 String inString = "";    // string to hold input
-unsigned long g = 0;
+int g = 0;
 
 
 void setup() {
@@ -27,20 +27,26 @@ void setup() {
 
 }
 
-void set_freq(unsigned long freq){
-  unsigned long top = round(8000000/freq); //where 8000000 = f_clk / 2
-  unsigned long temp = 0;
+void set_freq(int freq){
+  int top = round(8000000/freq); //where 8000000 = f_clk / 2
+  int temp = 0;
   if (top > TM_BITS){
-     top = TM_BITS; // avoid overrange
+     ICR1H = floor(top/TM_BITS);
+     top = top % TM_BITS; // avoid overrange
   }
-  if (top < 10){
-    top = 10;  // avoid overrange
+  if (top < 3){
+    ICR1H = 0;
+    top = 3;  // avoid overrange
+    }
+  if ((top <= TM_BITS)&&(top >= 3)){
+    ICR1H = 0;
     }
       ICR1L = top; 
       temp = round(top/2);
       OCR1A = temp;
       OCR1B = temp - 1;
       temp = 0;
+  
   
   }
 
